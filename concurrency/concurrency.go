@@ -1,7 +1,7 @@
 package concurrency
 
 import (
-	"concurrency_weather/httpClient"
+	"concurrency_weather/customHttpClient"
 	"fmt"
 	"sync"
 	"time"
@@ -19,8 +19,8 @@ type Weather struct {
 }
 
 func (c City) FetchWeatherSingleThread() (*Weather, error) {
-	reqObj := httpClient.RequestObject{Lat: c.Latitude, Lon: c.Longitude}
-	client := httpClient.NewCustomHttpClient(reqObj)
+	reqObj := customHttpClient.RequestObject{Lat: c.Latitude, Lon: c.Longitude}
+	client := customHttpClient.NewCustomHttpClient(reqObj)
 
 	response, err := client.MakeWeatherRequest()
 	if err != nil {
@@ -36,8 +36,8 @@ func (c City) FetchWeatherSingleThread() (*Weather, error) {
 
 func (c City) FetchWeatherConcurrently(ch chan<- Weather, wg *sync.WaitGroup) (*Weather, error) {
 	defer wg.Done()
-	reqObj := httpClient.RequestObject{Lat: c.Latitude, Lon: c.Longitude}
-	client := httpClient.NewCustomHttpClient(reqObj)
+	reqObj := customHttpClient.RequestObject{Lat: c.Latitude, Lon: c.Longitude}
+	client := customHttpClient.NewCustomHttpClient(reqObj)
 	response, err := client.MakeWeatherRequest()
 	if err != nil {
 		return nil, err
