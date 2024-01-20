@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const apiKey = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2IjoxLCJ1c2VyIjoiaG9sb2dyYW1fZ2ltYmVsX2JlbiIsImlzcyI6ImxvZ2luLm1ldGVvbWF0aWNzLmNvbSIsImV4cCI6MTcwNTM2MDU5OSwic3ViIjoiYWNjZXNzIn0.dtK72PYAMPsMl-Hv4IGvP9a1YByomPyIYYYueY5Sc3JPWFAofDcTUi498VXB2rVTegqH_b0TNeTgVdc2nsGe1A"
+const apiKey = "<PUT_HERE>"
 
 type RequestObject struct {
 	Lat float64
